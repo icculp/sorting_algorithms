@@ -9,11 +9,11 @@
 void shell_sort(int *array, size_t size)
 {
 	size_t i, gap = 1, k, n;
-
+	int v;
 
 	if (array == NULL)
 		return;
-
+	n = 1, n++;
 	while (gap < size / 3)
 		gap = 3 * gap + 1;
 
@@ -21,12 +21,12 @@ void shell_sort(int *array, size_t size)
 	{
 		for (i = gap; i < size; i++)
 		{
-			for (k = i; (k > 0) && (array[k] < array[k - gap]); k -= gap)
+			v = array[i];
+			for (k = i; (k > gap - 1) && (v <= array[k - gap]); k -= gap)
 			{
-				n = array[k];
 				array[k] = array[k - gap];
-				array[k - gap] = n;
 			}
+			array[k] = v;
 		}
 		gap = (gap - 1) / 3;
 		print_array(array, size);
