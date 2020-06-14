@@ -19,7 +19,7 @@ int partition(int *a, int l, int h)
 	i = l;
 	for (j = l; j < h; j++)
 	{
-		if (a[j] < p)
+		if (a[j] <= p)
 		{
 			if (i != j)
 			{
@@ -31,7 +31,7 @@ int partition(int *a, int l, int h)
 			i++;
 		}
 	}
-	if (i + 1 != h)
+	if (i != h)
 	{
 		t = a[i];
 		a[i] = a[h];
@@ -70,5 +70,7 @@ void qs(int *a, int l, int h)
 
 void quick_sort(int *array, size_t size)
 {
+	if (array == NULL)
+		return;
 	qs(array, 0, size - 1);
 }
