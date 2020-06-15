@@ -46,4 +46,9 @@ void shell_sort(int *array, size_t size);
 /** 5 */
 void cocktail_sort_list(listint_t **list);
 
+/** 6 */
+void counting_sort(int *array, size_t size);
+int findmax(int *array, size_t size);
+int count(int *array, size_t size, int val);
+
 #endif
