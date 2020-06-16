@@ -61,6 +61,7 @@ void counting_sort(int *array, size_t size)
 		j += count(array, size, i);
 		ca[i] = j;
 	}
+	print_array(ca, max + 1);
 	for (i = 0; i < (int)size; i++)
 	{
 		out[ca[array[i] - 1]] = array[i];
@@ -69,7 +70,6 @@ void counting_sort(int *array, size_t size)
 	for (i = 0; i < (int)size; i++)
 		array[i] = out[i];
 
-	print_array(ca, max + 1);
 	free(out);
 	free(ca);
 }
