@@ -62,7 +62,10 @@ void counting_sort(int *array, size_t size)
 		ca[i] = j;
 	}
 	for (i = 0; i < (int)size; i++)
+	{
 		out[ca[array[i] - 1]] = array[i];
+		ca[array[i] - 1] += 1;
+	}
 	for (i = 0; i < (int)size; i++)
 		array[i] = out[i];
 
