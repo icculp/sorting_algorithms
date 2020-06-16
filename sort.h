@@ -51,4 +51,9 @@ void counting_sort(int *array, size_t size);
 int findmax(int *array, size_t size);
 int count(int *array, size_t size, int val);
 
+/** 7 */
+void merge_sort(int *array, size_t size);
+void merge(int *array, int low, int middle, int high);
+void merge_sorty(int *array, int low, int high);
+
 #endif
