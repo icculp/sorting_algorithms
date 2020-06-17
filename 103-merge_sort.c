@@ -8,13 +8,10 @@
 * @high: high index of split
 */
 
-void merge(int *array, int low, int middle, int high)
+void merge(int *array, int low, int middle, int high, int *temp)
 {
-	int *temp, i, j, k, l = 0, r = 0, n, left[4096], right[4096];
+	int i, j, k, l = 0, r = 0, n, left[4096], right[4096];
 
-	temp = malloc(sizeof(int) * (high - low + 1));
-	if (temp == NULL)
-		return;
 	printf("Merging...\n");
 	i = low, j = middle + 1, k = l = 0;
 	while (i <= middle && j <= high)
@@ -43,7 +40,6 @@ void merge(int *array, int low, int middle, int high)
 		else
 			printf("\n");
 	}
-	free(temp);
 }
 
 /**
@@ -53,16 +49,16 @@ void merge(int *array, int low, int middle, int high)
 * @high: highest index of split
 */
 
-void merge_sorty(int *array, int low, int high)
+void merge_sorty(int *array, int low, int high, int *temp)
 {
 	int middle;
 
 	if (low < high)
 	{
 		middle = ((high + low - 1) / 2);
-		merge_sorty(array, low, middle);
-		merge_sorty(array, middle + 1, high);
-		merge(array, low, middle, high);
+		merge_sorty(array, low, middle, temp);
+		merge_sorty(array, middle + 1, high, temp);
+		merge(array, low, middle, high, temp);
 	}
 }
 
@@ -74,7 +70,13 @@ void merge_sorty(int *array, int low, int high)
 
 void merge_sort(int *array, size_t size)
 {
+	int *temp;
+
 	if (array == NULL || size < 2)
 		return;
-	merge_sorty(array, 0, size - 1);
+	temp = malloc(sizeof(int) * (size + 1));
+	if (temp == NULL)
+		return;
+	merge_sorty(array, 0, size - 1, temp);
+	free(temp);
 }
