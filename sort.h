@@ -61,7 +61,7 @@ void heap_sort(int *array, size_t size);
 
 /** 9 */
 void radix_sort(int *array, size_t size);
-void counting_sort_r(int *array, size_t size, int pos);
+void counting_sort_r(int *array, size_t size, int pos, int *out, int *ca);
 int findmax_r(int *array, size_t size, int pos);
 int count_r(int *array, size_t size, int val, int pos);
 

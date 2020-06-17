@@ -27,25 +27,7 @@ int findmax(int *array, size_t size)
 
 void radix_sort(int *array, size_t size)
 {
-	int m, pos;
-
-	if (array == NULL || size < 2)
-		return;
-	m = findmax(array, size);
-	for (pos = 1; m / pos > 0; pos *= 10)
-		counting_sort_r(array, size, pos), print_array(array, size);
-}
-
-/**
-* counting_sort_r - sorts array using counting algorithm
-* @array: Array to sort
-* @size: Size of array
-* @pos: Digit position value
-*/
-
-void counting_sort_r(int *array, size_t size, int pos)
-{
-	int *ca, i, *out;
+	int m, pos, *out, *ca;
 
 	if (array == NULL || size < 2)
 		return;
@@ -53,6 +35,30 @@ void counting_sort_r(int *array, size_t size, int pos)
 	ca = malloc(sizeof(int) * (10));
 	if (ca == NULL || out == NULL)
 		return;
+	m = findmax(array, size);
+	for (pos = 1; m / pos > 0; pos *= 10)
+		counting_sort_r(array, size, pos, out, ca), print_array(array, size);
+	free(out);
+	free(ca);
+}
+
+/**
+* counting_sort_r - sorts array using counting algorithm
+* @array: Array to sort
+* @size: Size of array
+* @pos: Digit position value
+* @out: Temp output array
+* @ca: Count array
+*/
+
+void counting_sort_r(int *array, size_t size, int pos, int *out, int *ca)
+{
+	int i;
+
+	if (array == NULL || size < 2)
+		return;
+	for (i = 0; i < (int)size; i++)
+		ca[i] = 0;
 	for (i = 0; i < (int)size; i++)
 		ca[(array[i] / pos) % 10] += 1;
 	for (i = 0; i < (int)size; i++)
