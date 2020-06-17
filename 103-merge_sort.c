@@ -6,6 +6,7 @@
 * @low: lowest index of split
 * @middle: middle index of split
 * @high: high index of split
+* @temp: temp array for merging
 */
 
 void merge(int *array, int low, int middle, int high, int *temp)
@@ -47,6 +48,7 @@ void merge(int *array, int low, int middle, int high, int *temp)
 * @array: Array
 * @low: Lowest index of split
 * @high: highest index of split
+* @temp: temp array for mergin
 */
 
 void merge_sorty(int *array, int low, int high, int *temp)
