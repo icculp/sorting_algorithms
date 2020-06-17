@@ -74,7 +74,7 @@ void merge_sorty(int *array, int low, int high)
 
 void merge_sort(int *array, size_t size)
 {
-	if (array == NULL)
+	if (array == NULL || size < 2)
 		return;
 	merge_sorty(array, 0, size - 1);
 }
