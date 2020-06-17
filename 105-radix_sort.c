@@ -31,11 +31,11 @@ void radix_sort(int *array, size_t size)
 
 	if (array == NULL || size < 2)
 		return;
+	m = findmax(array, size);
 	out = malloc(sizeof(int) * (int)size);
 	ca = malloc(sizeof(int) * (10));
 	if (ca == NULL || out == NULL)
 		return;
-	m = findmax(array, size);
 	for (pos = 1; m / pos > 0; pos *= 10)
 		counting_sort_r(array, size, pos, out, ca), print_array(array, size);
 	free(out);
@@ -57,11 +57,11 @@ void counting_sort_r(int *array, size_t size, int pos, int *out, int *ca)
 
 	if (array == NULL || size < 2)
 		return;
-	for (i = 0; i < (int)size; i++)
+	for (i = 0; i < 10; i++)
 		ca[i] = 0;
 	for (i = 0; i < (int)size; i++)
-		ca[(array[i] / pos) % 10] += 1;
-	for (i = 0; i < (int)size; i++)
+		ca[((array[i] / pos) % 10)] += 1;
+	for (i = 0; i < 10; i++)
 		ca[i] += ca[i - 1];
 	for (i = size - 1; i >= 0; i--)
 	{
