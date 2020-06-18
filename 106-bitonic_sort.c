@@ -36,14 +36,14 @@ void b_merge(int *array, int low, int count, int dir, size_t size)
 			(dir == 0 && (array[i] < array[i + n])))
 			{
 				swapint(&array[i], &array[i + n]);
-				printf("Result [%d/%d]", n, (int)size);
+/**				printf("Result [%d/%d]", n, (int)size);
 				if (dir == 1)
 					printf("(UP):\n");
 				else
 					printf("(DOWN):\n");
 				printf("%d, %d\n", array[i], array[i + n]);
 				printf("merging\n");
-				print_array(array, count);
+				print_array(array, count);*/
 			}
 		}
 		b_merge(array, low, n, dir, size);
@@ -59,14 +59,17 @@ void b_sort(int *array, int low, int count, int dir, size_t size)
 	if (count > 1)
 	{
 		n = count / 2;
-				if (dir == 1)
+/**				if (dir == 1)
 					printf("(UP):\n");
 				else
 					printf("(DOWN):\n");
-				print_array(array, count);
+				print_array(array, count);*/
+				printf("b4");
+				print_array(array, low +count);
 		b_sort(array, low, n, 1, size);
 		b_sort(array, low + n, n, 0, size);
 		b_merge(array, low, count, dir, size);
+				print_array(array, count);
 	}
 }
 
