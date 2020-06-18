@@ -65,5 +65,8 @@ void counting_sort_r(int *array, size_t size, int pos, int *out, int *ca);
 
 /** 10 */
 void bitonic_sort(int *array, size_t size);
+void swapint(int *l, int *r);
+void b_sort(int *array, int low, int count, int dir, size_t size);
+void b_merge(int *array, int low, int count, int dir, size_t size);
 
 #endif
